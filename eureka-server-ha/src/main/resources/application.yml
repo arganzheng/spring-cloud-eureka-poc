@@ -1,0 +1,82 @@
+# This default profile is used when running a single instance completely standalone:
+spring:
+  profiles: default
+  
+spring:  
+  application:  
+    name: EUREKA-SINGLE
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+
+--- 
+spring:  
+  # 指定profile=peer1  
+  profiles: peer1  
+
+spring:  
+  application:  
+    name: EUREKA-HA-PEER1
+
+server:
+  port: 8761
+
+eureka:  
+  instance:  
+    # 指定当profile=peer1时，主机名是peer1  
+    hostname: peer1  
+  client:  
+    registerWithEureka: true
+    fetchRegistry: true  
+    serviceUrl:  
+      # 将自己注册到peer2 Eureka上面去 
+      defaultZone: http://peer2:8762/eureka/
+
+---  
+spring:  
+  profiles: peer2 
+
+spring:  
+  application:  
+    name: EUREKA-HA-PEER2
+
+server:  
+  port: 8762  
+ 
+eureka:  
+  instance:  
+    hostname: peer2  
+  client:  
+    registerWithEureka: true
+    fetchRegistry: true  
+    serviceUrl:  
+      # 将自己注册到peer3 Eureka上面去 
+      defaultZone: http://peer3:8763/eureka/
+
+---  
+spring:  
+  profiles: peer3  
+
+spring:  
+  application:  
+    name: EUREKA-HA-PEER3
+
+server:  
+  port: 8763 
+
+eureka:  
+  instance:  
+    hostname: peer3  
+  client:  
+    registerWithEureka: true
+    fetchRegistry: true  
+    serviceUrl:  
+      # 将自己注册到peer1 Eureka上面去 
+      defaultZone: http://peer1:8761/eureka/
