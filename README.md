@@ -4,12 +4,14 @@
 
 针对这个帖子反映的问题：[Eureka doesn't replicate its registry info to all servers](https://stackoverflow.com/questions/39118722/eureka-doesnt-replicate-its-registry-info-to-all-servers)，做了一个实际测试。
 
-三个Eureka Server: peer1 -> peer2, peer2 -> peer3, peer3 -> peer1
-一个Eureka Client: client -> peer1
+部署情况如下：
+
+* 三个Eureka Server: peer1 -> peer2, peer2 -> peer3, peer3 -> peer1
+* 一个Eureka Client: client -> peer1
 
 ![eureka-server-ha](/screenshots/eureka-server-ha.jpg?raw=true)
 
-测试结果：
+测试结果有点令人吃惊：
 
 client 在 peer1 和 peer2上有注册信息，但是在peer3上没有。如下图所示：
 
