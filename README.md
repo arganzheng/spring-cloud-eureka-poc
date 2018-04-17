@@ -11,9 +11,9 @@
 
 client 在 peer1 和 peer2上有注册信息，但是在peer3上没有。如下图所示：
 
-![eureka-server-peer1-info](/screenshots/eureka-server-peer1-info.jpg)
-![eureka-server-peer1-info](/screenshots/eureka-server-peer2-info.jpg)
-![eureka-server-peer1-info](/screenshots/eureka-server-peer3-info.jpg)
+![eureka-server-peer1-info](/screenshots/eureka-server-peer1-info.jpg?raw=true)
+![eureka-server-peer1-info](/screenshots/eureka-server-peer2-info.jpg?raw=true)
+![eureka-server-peer1-info](/screenshots/eureka-server-peer3-info.jpg?raw=true)
 
 **结论**
 
